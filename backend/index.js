@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from "cors";
+import userRouter from "./routes/userRouter.js";
 
 const app = express();
 app.use(cors());
@@ -13,6 +14,8 @@ mongoose.connect(mongoUrl).then(() =>
 ).catch((err) =>
     console.log("MongoDB connection failed", err.message)
 );
+
+app.use("/api/users" , userRouter)
 
 const PORT = 4000;
 app.listen(PORT, () => {
