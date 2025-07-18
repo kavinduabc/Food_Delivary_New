@@ -22,5 +22,6 @@ export function userRejister(req,res){
 }
 
 export function userLogin(req,res){
+    const {email,password} = req.body;
     
 }
