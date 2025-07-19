@@ -23,5 +23,19 @@ export function userRejister(req,res){
 
 export function userLogin(req,res){
     const {email,password} = req.body;
+    user.findOne({email:email}).then((user)=>{
+        if(!user){
+            return res.status(404).json({
+                error:"User is not found"
+            });
+        }
+         const isPasswordValid = bcrypt.compareSync(password, user.password);
+         if(isPasswordValid){
+            const token = jwt.sign({
+                
+            })
+         }
+    })
     
+
 }
